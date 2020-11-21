@@ -1,6 +1,7 @@
 package com.example.springsecuritytest.security;
 
 import com.example.springsecuritytest.define.AppConfig;
+import com.example.springsecuritytest.security.handle.AuthSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 UsernamePasswordJSONAuthenticationFilter filter = new UsernamePasswordJSONAuthenticationFilter();
                 filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/login", "POST"));
                 filter.setAuthenticationManager(authenticationManagerBean());
-                filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler("/login?ok"));
+                filter.setAuthenticationSuccessHandler(new AuthSuccessHandler());
                 filter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error"));
 
                 http.addFilterBefore(filter, UsernamePasswordJSONAuthenticationFilter.class);
