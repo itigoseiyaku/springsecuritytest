@@ -1,8 +1,10 @@
-package com.example.springsecuritytest.dto;
+package com.example.springsecuritytest.dto.login;
 
 import lombok.Data;
-import org.springframework.lang.NonNull;
 
+/**
+ * ログイン(/login)APIのRequestBody
+ */
 @Data
 public class LoginRequestBody {
 
